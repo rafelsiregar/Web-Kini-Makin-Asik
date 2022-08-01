@@ -10,13 +10,30 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Carousel from 'react-bootstrap/Carousel';
 
+class MainButton extends React.Component {
+    render (){
+       return (<Button className = {"mainButton btn "+this.props.colorClass} onClick={event =>  window.open(this.props.website, '_blank')}>
+    {this.props.buttonName.toUpperCase()}</Button>);
+    }
+}
+
+
 function HomeJumbotron (){
     return (<header className="App-header">
     <WebNavbar />
-    <div className = "title">
-      <img src={"./assets/serverKMA.png"} className="App-logo" alt="logo" />
-          <Title />
+    <div className = "row title">
+        <div className = "col-3 justify-content-center">
+            <img src={"./assets/serverKMA.png"} className="App-logo" alt="logo" />    
+        </div>
+      <div className = "col-9">
+        <Title />
+        <div>
+            <MainButton buttonName = "Join Discord" colorClass = "purple-btn" website = "https://s.id/serverKMA"/>
+            <MainButton buttonName = "Join Telegram" colorClass = "aqua-btn" website = "https://t.me/nefariaclub"/>
+            <MainButton buttonName = "Follow Instagram" colorClass = "instagram-btn" website = "https://instagram.com/kma_server"/>
+        </div>
       </div>
+    </div>
     </header>
     );
 }
@@ -27,9 +44,9 @@ class FacilityCard extends React.Component {
               <Card as={Col} className = {'common-card mx-3 my-3 px-3'} style={{ width: '18rem', backgroundColor : this.props.color, color : "white"}}>
                     <Card.Body>
                         
-                            <div className = {'d-inline-flex my-4 '} >
+                            <div className = {'my-4'} >
                                 <img src={'assets/'+this.props.symbol+'.png'} style={{ width : "20%", height : "20%"}} alt={this.props.symbol}></img>
-                                <Card.Title className = {'ml-3'}>{this.props.title.toUpperCase()}</Card.Title>
+                                <Card.Title className = {'mt-3'}>{this.props.title.toUpperCase()}</Card.Title>
                             </div>
                         
                   </Card.Body>
@@ -63,13 +80,15 @@ function WebNavbar() {
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="ml-auto">
               <Nav.Link href="#home">Home</Nav.Link>
-              <Nav.Link href="#link">Link</Nav.Link>
+              <Nav.Link href="#facility">Fasilitas</Nav.Link>
+              <Nav.Link href="#mascot">Maskot</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
       </Navbar>
     );
   }
+
 
   
 
@@ -78,15 +97,18 @@ class Title extends React.Component {
       super();
       this.state = {
           title: "Kini Makin Asik",
-          subTitle: "Server Tercepat, Termuda, dan Terbaik"
+          subTitle: "Server Tercepat, Termuda, dan Terbaik",
+          description : `Server "Kini Makin Asik" merupakan server yang bertujuan untuk menyatukan berbagai latar belakang menjadi satu komunitas. Server ini dibuat
+          untuk menjadi wadah komunikasi dan sarana ekspresi diri melalui banyak hal.`
       }
   }
 
   render(){
       return(
           <div>
-              <h1 style={{fontSize: "3rem"}}> {this.state.title} </h1>
-              <p style={{fontSize: "1rem"}}> {this.state.subTitle} </p>
+              <h1 style={{fontSize: "3.5rem"}}> {this.state.title} </h1>
+              <p style={{fontSize: "1.5rem", marginTop : "1vh"}}> {this.state.subTitle} </p>
+              <p style={{fontSize: "1.2rem", marginTop : "5vh", fontFamily:'Open Sans'}}> {this.state.description} </p>
           </div>
       );
   }
@@ -131,7 +153,7 @@ class About extends React.Component {
                         <h1 className = "description-header"> {this.state.title} </h1>
                         <p className = "description-caption"> {this.state.caption} </p>
                         <Row className="mx-auto">
-                            <FacilityCard title="Sharing Kehidupan Sekolah" color="blue"/>
+                            <FacilityCard title="Sharing Kehidupan Sekolah" color="blue" symbol="School"/>
                             <FacilityCard title="Sharing Pembelajaran" color="maroon"/>
                             <FacilityCard symbol = "Microphone" title="Podcast" color="rgb(255, 108, 3)"/>
                         </Row>
