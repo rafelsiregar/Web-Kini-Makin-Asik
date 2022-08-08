@@ -129,4 +129,13 @@ p.description-caption {
   padding: 5vh 5vw;
 }
 
+.footer{
+  background: rgb(0,0,128);
+  color:white;
+}
+
+.follow-us {
+  text-align: center;
+  justify-content: center;
+}
 

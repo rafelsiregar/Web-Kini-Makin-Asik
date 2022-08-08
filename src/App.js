@@ -136,6 +136,27 @@ class About extends React.Component {
         }
     }
 
+    class Karya extends React.Component {
+        constructor(){
+            super();
+            this.state = {
+                title : `Karya`,
+                caption : `Server "Kini Makin Asik" merupakan server yang memberikan kesempatan anda untuk berkarya baik itu berupa fotografi maupun berupa desain grafis. `
+            }
+        }
+    
+        render(){
+            return(
+                    <div id="#about" className = "description-container">
+                        <div className="text-container">
+                        <h1 className = "description-header"> {this.state.title} </h1>
+                        <p className = "description-caption"> {this.state.caption} </p>
+                        </div>
+                    </div>
+                );
+            }
+        }
+
 
     class Facility extends React.Component {
         constructor(){
@@ -173,9 +194,9 @@ class About extends React.Component {
                 super();
                 this.state = {
                     title : "Maskot",
-                    caption : [`Kini Makin Asik memiliki maskot bernama "Nefaria". "Nefaria" menggambarkan seorang wanita yang pekerja keras, cerdas, dan kalem. Ia juga menggambarkan seorang yang suka membantu
-                    dan selalu membuat orang lain bersemangat. "Nefaria" menjadi tema besar server "Kini Makin Asik" yang bertujuan menciptakan komunitas yang memberikan semangat kepada anggotanya.`, 
-                    `Nefaria juga tersedia dalam bentuk emoji di server "Kini Makin Asik". Emoji tersebut menunjukkan ekspresi bahagia, sedih, marah, penasaran, dan masih banyak lagi.`]
+                    caption : [`Kini Makin Asik memiliki maskot bernama "Andal". "Andal" menggambarkan seorang wanita yang pekerja keras, cerdas, dan kalem. Ia juga menggambarkan seorang yang suka membantu
+                    dan selalu membuat orang lain bersemangat. "Andal" menjadi tema besar server "Kini Makin Asik" yang bertujuan menciptakan komunitas yang memberikan semangat kepada anggotanya.`, 
+                    `Andal juga tersedia dalam bentuk emoji di server "Kini Makin Asik". Emoji tersebut menunjukkan ekspresi bahagia, sedih, marah, penasaran, dan masih banyak lagi.`]
                 }
             }
 
@@ -236,6 +257,13 @@ class About extends React.Component {
                                             <MascotCard symbol="emojiKMA9" color = "gray"/>
                                         </Row>
                                     </Carousel.Item>
+                                    <Carousel.Item>
+                                        <Row className="mx-auto">
+                                        <MascotCard symbol="emojiKMA10" color = "gray"/>
+                                            <MascotCard symbol="emojiKMA11" color = "gray"/>
+                                            <MascotCard symbol="emojiKMA12" color = "gray"/>
+                                        </Row>
+                                    </Carousel.Item>
                                 </Carousel>
                             </div>
                             <p className = "description-caption"> {this.state.caption[1]} </p>
@@ -245,6 +273,42 @@ class About extends React.Component {
             }
         }
 
+        function Logo(props){
+            return (
+                    <a href={props.website} className="px-2">
+                    <img alt = {props.name} src={'assets/'+props.name+'.png'} style={{height : "10%", width : "10%"}}></img>
+                    </a>
+            )
+        }
+
+        function Footer() {
+                    return (
+        <div className="pt-5 pb-5 footer">
+        <div className="container">
+        <Row>
+            <Col className="col-lg-6 col-xs-12 about-us">
+            <h2>Kini Makin Asik</h2>
+            <p className="text-white-50">Server Tercepat, Termuda, dan Terbaik</p>
+            <p className="mt-lg-3">Server Kini Makin Asik merupakan server yang dirancang untuk menjadi komunitas pembelajaran, khususnya pembelajaran tingkat SD hingga SMA dan juga pembelajaran IT. Server ini juga menyediakan
+                berbagai macam sarana untuk menuangkan ide dan menyalurkan hobi melalui berbagai karya, antara lain fotografi, desain grafis, gambar, dan sebagainya.
+            </p>
+            </Col>
+            <Col className="col-lg-6 col-xs-12 follow-us">
+                <h3 className="mt-lg-0 mt-sm-4 text-center mb-3">Ikuti Kami</h3>
+                <p>
+                <Logo website="https://www.instagram.com/kma_server" name="Instagram"/>
+                <Logo website="https://s.id/serverKMA" name="Discord"/>
+                </p>
+            </Col>
+        </Row>
+        <div className="row mt-5">
+            <div className="col copyright">
+            <p className=""><small className="text-white-50">© 2022. All Rights Reserved.</small></p>
+            </div>
+        </div>
+        </div>
+        </div>);
+}
 
 
 function App() {
@@ -255,6 +319,8 @@ function App() {
         <About />
         <Facility />
         <Mascot />
+        <Karya />
+        <Footer />
       </div>
   );
 }
